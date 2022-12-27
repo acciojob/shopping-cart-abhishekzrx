@@ -1,32 +1,35 @@
-//your code here
-let iteminput=document.getElementById("item-name-input");
-let priceinput=document.getElementById("item-price-input")
+let itemInput = document.getElementById('item-name-input');
+let priceInput = document.getElementById('item-price-input');
 
-let button=document.getElementById('add')
+let button = document.getElementById('add');
 
-let table=document.getElementById('table')
-let total=document.getElementById('total')
-let priceArr=[];
-//function for adding
-function addItem(){
-    
-    let sum=0;
-    let  item=iteminput.value;
-    let price=priceinput.value;
-    if(item !='' && price !=""){
-      let row=document.createElement('tr');
-      priceArr.push(parseInt(price));
-      row.innerHTML=` <td>${item}</td> <td>${price}</td> `
-    //row.innerHTML="<td> abc </td> <td> 100</td>"
-     //console.log(row);
-     for(let i=0;i<priceArr.length;i++){
-             sum=sum+priceArr[i];
-     }
-    table.append(row);
-   total.innerHTML=sum;
-   iteminput.value=''
-   priceinput.value=''
+let table = document.getElementById('table');
+let total = document.getElementById('total');
+
+let priceArr = [];
+function addItem() {
+    let item = itemInput.value;
+    let price = priceInput.value;
+    let sum = 0;
+
+    if (item !== '' && price !== "") {
+        // you can start items to the screen
+        let row = document.createElement('tr');
+        priceArr.push(parseInt(price));
+        // console.log(priceArr);
+        row.innerHTML = `<td>${item} </td> <td>${price}</td> `
+        
+        for (let i = 0; i < priceArr.length; i++) {
+            sum += priceArr[i];
+        }
+        
+        console.log(sum);
+        table.append(row);
+        total.innerText = sum;
+        
+        itemInput.value = '';
+        priceInput.value = '';
+    }
 }
-}
 
-button.addEventListener('click',addItem)
+button.addEventListener('click', addItem)
